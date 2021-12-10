@@ -5,7 +5,6 @@
 </h1>
 
 <h4 align="center">A minimal stocks API wrapper of <a href="https://github.com/ranaroussi/yfinance" target="_blank">yfinance</a>.</h4>
-
 <p align="center">
   <a href="#build">Build</a> •
   <a href="#endpoints">Endpoints</a> •
@@ -13,13 +12,15 @@
   <a href="#license">License</a>
 </p>
 
+<h3> Forked from pinkahd for a Unraid container</h3>
+
 ## Build
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Docker](https://www.docker.com/get-started) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/pinkahd/py-stocks
+$ git clone https://github.com/patrickstigler/py-stocks
 
 # Go into the repository
 $ cd py-stocks
@@ -244,6 +245,7 @@ JSON Response:
 
 This software uses the following open source packages:
 
+- [PY-Stocks](https://github.com/pinkahd)
 - [yfinance](https://pypi.org/project/yfinance/)
 - [gunicorn](https://gunicorn.org/)
 - [Flask](https://flask.palletsprojects.com)
