@@ -51,26 +51,32 @@ curl localhost:8000/download/AAPL/2021-08-01/2021-08-03 | jq
 JSON Response
 
 ```json
-{
-  "Open": {
-    "1627862400000": 146.3600006104
-  },
-  "High": {
-    "1627862400000": 146.9499969482
-  },
-  "Low": {
-    "1627862400000": 145.25
-  },
-  "Close": {
-    "1627862400000": 145.5200042725
-  },
-  "Adj Close": {
-    "1627862400000": 145.3023071289
-  },
-  "Volume": {
-    "1627862400000": 62880000
-  }
-}
+{"schema":
+{"fields":[{"name":"Date","type":"datetime"},{"name":"Open","type":"number"},
+{"name":"High","type":"number"},{"name":"Low","type":"number"},{"name":"Close","type":"number"},
+{"name":"Adj Close","type":"number"},{"name":"Volume","type":"integer"}],"primaryKey":["Date"],"pandas_version":"0.20.0"},
+"data":[{"Date":"2019-12-31T00:00:00.000Z","Open":289.9299926758,"High":293.6799926758,"Low":289.5199890137,"Close":293.6499938965,"Adj Close":289.8670349121,"Volume":25247625}]}
+```
+
+
+### History
+
+The `/history/:symbol/` endpoint takes a symbol
+
+Params:
+
+- will download all available data about the symbol
+
+Example command
+
+```bash
+curl localhost:8000/history/AAPL/ | jq
+```
+
+JSON Response
+
+```json
+{"schema":{"fields":[{"name":"Date","type":"datetime"},{"name":"Open","type":"number"},{"name":"High","type":"number"},{"name":"Low","type":"number"},{"name":"Close","type":"number"},{"name":"Volume","type":"integer"},{"name":"Dividends","type":"number"},{"name":"Stock Splits","type":"number"}],"primaryKey":["Date"],"pandas_version":"0.20.0"},"data":[{"Date":"1980-12-12T00:00:00.000Z","Open":0.4784811735,"High":0.4805576009,"Low":0.4784811735,"Close":0.4784811735,"Volume":117258400,"Dividends":0.0,"Stock Splits":0.0},{"Date":"1980-12-15T00:00:00.000Z","Open":0.4535170794,"High":0.4555935627,"Low":0.4535170794,"Close":0.4535170794,"Volume":43971200,"Dividends":0.0,"Stock Splits":0.0},{"Date":"1980-12-16T00:00:00.000Z","Open":0.4202322364,"High":0.4223087202,"Low":0.4202322364,"Close":0.4202322364,"Volume":26432000,"Dividends":0.0,"Stock Splits":0.0},{"Date":"1980-12-17T00:00:00.000Z","Open":0.4306303263,"High":0.4327067819,"Low":0.4306303263,"Close":0.4306303263,"Volume":21610400,"Dividends":0.0,"Stock Splits":0.0},{"Date":"1980-12-18T00:00:00.000Z","Open":0.4431188107,"High":0.4451952656,"Low":0.4431188107,"Close":0.4431188107,"Volume":18362400,"Dividends":0.0,"Stock Splits":0.0},{"Date":"1980-12-19T00:00:00.000Z","Open":0.4701594412,"High":0.4722368129,"Low":0.4701594412,"Close":0.4701594412,"Volume":12157600,"Dividends":0.0,"Stock Splits":0.0},{"Date":"1980-12-22T00:00:00.000Z","Open":0.4930462837,"High":0.4951236558,"Low":0.4930462837,"Close":0.4930462837,"Volume":9340800,"Dividends":0.0,"Stock Splits":0.0},{"Date":"1980-12-23T00:00:00.000Z","Open":0.5138424039,"High":0.5159197751,"Low":0.5138424039,"Close":0.5138424039,"Volume":11737600,"Dividends":0.0,"Stock Splits":0.0},{"Date":"2021-12-10T00:00:00.000Z","Open":175.2050018311,"High":177.5680999756,"Low":174.6999969482,"Close":177.4848022461,"Volume":61115558,"Dividends":0.0,"Stock Splits":0.0}]}
 ```
 
 ### Info
