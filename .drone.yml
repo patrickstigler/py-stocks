@@ -13,6 +13,6 @@ steps:
         tags: latest
     volumes:
       - name: docker_sock
-        path: /var/run/docker.sock
+      - path: /var/run/docker.sock
   commands:
     - docker build . --no-cache -t patrickstigler/py-stock-api:latest
