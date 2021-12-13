@@ -6,9 +6,12 @@ name: default
 
 steps:
 - name: build
-  image: python:3.9-slim
+    image: docker:latest
+    volumes:
+      - name: docker_sock
+        path: /var/run/docker.sock
   commands:
-    - docker build . -t patrickstigler/py-stock-api:${DRONE_BUILD_NUMBER} -t patrickstigler/py-stock-api:latest
+    - docker build . --no-cache -t patrickstigler/py-stock-api:latest
 
 - name: publish  
   image: plugins/docker
