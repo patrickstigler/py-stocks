@@ -1,18 +1,12 @@
-#Drone CI File!
-
 kind: pipeline
-type: docker
 name: default
 
 steps:
+
   - name: build-image
-    image: plugins/docker
-    settings:
-        username: docker_username
-        password: docker_password
-        tags: latest
+    image: docker:latest
     volumes:
       - name: docker_sock
-      - path: /var/run/docker.sock
-  commands:
-    - docker build . --no-cache -t patrickstigler/py-stock-api:latest
+        path: /var/run/docker.sock
+    commands:
+      - docker build --no-cache -t patrickstigler/py-stocks-api:latest .
