@@ -1,5 +1,4 @@
 FROM python:3.9-slim
-MAINTAINER Alexandru Pinca <alex@alexandru-pinca.me>
 
 WORKDIR /stocks
 COPY requirements.txt ./

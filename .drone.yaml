@@ -1,0 +1,21 @@
+#Drone CI File!
+
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: build
+  image: python:3.9-slim
+  commands:
+    - docker build . -t patrickstigler/py-stock-api:${DRONE_BUILD_NUMBER} -t patrickstigler/py-stock-api:latest
+
+- name: publish  
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: patrickstigler/py-stocks-api
+    auto_tag: true
