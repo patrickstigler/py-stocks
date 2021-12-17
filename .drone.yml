@@ -11,9 +11,9 @@ steps:
   commands:
   - sleep 5 # give docker enough time to start
   - docker build -t patrickstigler/py-stocks-api:latest .
-  - docker push patrickstigler/obs-ndi:latest
   
- - name: publish
+ steps:
+- name: push
   image: docker:dind
   volumes:
   - name: dockersock
@@ -21,3 +21,15 @@ steps:
   commands:
   - sleep 5 # give docker enough time to start
   - docker push patrickstigler/obs-ndi:latest
+
+services:
+- name: publish
+  image: docker:dind
+  privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
+
+volumes:
+- name: dockersock
+  temp: {}
