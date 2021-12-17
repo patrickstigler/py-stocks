@@ -3,7 +3,7 @@ kind: pipeline
 name: default
 
 steps:
-- name: buildAndPublish
+- name: build
   image: docker:dind
   volumes:
   - name: dockersock
@@ -12,15 +12,12 @@ steps:
   - sleep 5 # give docker enough time to start
   - docker build -t patrickstigler/py-stocks-api:latest .
   - docker push patrickstigler/obs-ndi:latest
-
-services:
-- name: publish
+  
+ - name: publish
   image: docker:dind
-  privileged: true
   volumes:
   - name: dockersock
     path: /var/run
-
-volumes:
-- name: dockersock
-  temp: {}
+  commands:
+  - sleep 5 # give docker enough time to start
+  - docker push patrickstigler/obs-ndi:latest
