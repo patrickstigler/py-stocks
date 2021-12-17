@@ -2,7 +2,6 @@ kind: pipeline
 name: default
 
 steps:
-
   - name: build-image
     image: docker:latest
     volumes:
@@ -10,3 +9,7 @@ steps:
         path: /var/run/docker.sock
     commands:
       - docker build --no-cache -t patrickstigler/py-stocks-api:latest .
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock
