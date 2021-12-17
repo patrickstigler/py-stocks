@@ -11,7 +11,7 @@ steps:
   commands:
   - sleep 5 # give docker enough time to start
   - docker build -t patrickstigler/py-stocks-api:latest .
-  - docker push -t patrickstigler/py-stocks-api:latest
+  - docker push patrickstigler/obs-ndi:latest
 
 services:
 - name: publish
