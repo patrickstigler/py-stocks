@@ -1,25 +1,11 @@
----
 kind: pipeline
+type: kubernetes
 name: default
 
 steps:
-- name: test
-  image: docker:dind
-  volumes:
-  - name: dockersock
-    path: /var/run
+
+- name: build
+  image: python
   commands:
-  - sleep 5 # give docker enough time to start
-  - docker ps -a
-
-services:
-- name: docker
-  image: docker:dind
-  privileged: true
-  volumes:
-  - name: dockersock
-    path: /var/run
-
-volumes:
-- name: dockersock
-  temp: {}
+  - pip install -r requirements.txt
+  - pytest
