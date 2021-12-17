@@ -14,6 +14,15 @@
 
 <h3> Forked from pinkahd for a Unraid container</h3>
 
+
+## Docker
+
+You can use the image:
+patrickstigler/py-stocks-api
+
+You only need to expose the container port 8000 and it should work.
+
+
 ## Build
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Docker](https://www.docker.com/get-started) installed on your computer. From your command line:
