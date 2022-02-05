@@ -23,6 +23,17 @@ def download(symbol, start, end):
 def info(symbol):
     return yf.Ticker(symbol).info
 
+@app.route("/analysis/<string:symbol>", methods=["GET"])
+def analysis(symbol):
+    return yf.Ticker(symbol).analysis.to_json()
+
+@app.route("/news/<string:symbol>", methods=["GET"])
+def news(symbol):
+    return jsonify(yf.Ticker(symbol).news)
+    
+@app.route("/stats/<string:symbol>", methods=["GET"])
+def stats(symbol):
+    return yf.Ticker(symbol).stats()
 
 @app.route("/history/<string:symbol>", methods=["GET"])
 def history(symbol):
